@@ -14,7 +14,7 @@ function report_error() {
 }
 
 function report_success_message() {
-    printf "\033[0;32mERROR: %s\033[0m\n" "$1"
+    printf "\033[0;32m%s\033[0m\n" "$1"
 }
 
 function validate_env() {
