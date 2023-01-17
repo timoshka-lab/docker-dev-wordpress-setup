@@ -28,32 +28,32 @@ function validate_env() {
   done
 
   if ! [[ $PHP_VERSION =~ ^([0-9]+)(\.[0-9]+){0,2}$ ]]; then
-    report_error "PHP_VERSION is not set or is invalid"
+    report_error "PHP_VERSION is not set or is invalid. Valid formats: '8', '8.0', '8.0.0'"
     return 1
   fi
 
   if ! [[ $WP_SITE_URL =~ ^https?://[-[:alnum:]:@/_.]*$ ]]; then
-    report_error "WP_SITE_URL is not set or is invalid"
+    report_error "WP_SITE_URL is not set or is invalid. Valid formats: 'http://example.test', 'https://example.test'"
     return 1
   fi
 
   if ! [[ $WP_EMAIL =~ ^[-_.+[:alnum:]]+@[-_.+[:alnum:]]+\.[[:alpha:]]+$ ]]; then
-    report_error "WP_EMAIL is not set or is invalid"
+    report_error "WP_EMAIL is not set or is invalid. Valid formats: 'wp@example.test'"
     return 1
   fi
 
   if ! [[ $MYSQL_VERSION =~ ^([0-9]+)(\.[0-9]+){0,2}$ ]]; then
-    report_error "MYSQL_VERSION is not set or is invalid"
+    report_error "MYSQL_VERSION is not set or is invalid. Valid formats: '8', '8.0', '8.0.0'"
     return 1
   fi
 
   if ! [[ $NGINX_VERSION =~ ^([0-9]+)(\.[0-9]+){0,2}$ ]]; then
-    report_error "NGINX_VERSION is not set or is invalid"
+    report_error "NGINX_VERSION is not set or is invalid. Valid formats: '1', '1.0', '1.0.0'"
     return 1
   fi
 
   if ! [[ $NGINX_SERVER_NAME =~ ^[-[:alnum:]/_.]*$ ]]; then
-    report_error "NGINX_SERVER_NAME is not set or is invalid"
+    report_error "NGINX_SERVER_NAME is not set or is invalid. Valid formats: 'example.test'"
     return 1
   fi
 
