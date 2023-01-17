@@ -89,9 +89,32 @@ function validate_dependencies() {
   fi
 }
 
+function generate_rand_hash() {
+  LC_ALL=C tr -dc 'A-Za-z0-9!%#$&()-+*.=<>@^_~' </dev/urandom | head -c 64 ; echo ''
+}
+
+function generate_wp_salt_env() {
+  if [ -e "/dev/urandom" ]; then
+    echo "Generating random salts..."
+    {
+      echo "WP_AUTH_KEY=\"$(generate_rand_hash)\""
+      echo "WP_SECURE_AUTH_KEY=\"$(generate_rand_hash)\""
+      echo "WP_LOGGED_IN_KEY=\"$(generate_rand_hash)\""
+      echo "WP_NONCE_KEY=\"$(generate_rand_hash)\""
+      echo "WP_AUTH_SALT=\"$(generate_rand_hash)\""
+      echo "WP_SECURE_AUTH_SALT=\"$(generate_rand_hash)\""
+      echo "WP_LOGGED_IN_SALT=\"$(generate_rand_hash)\""
+      echo "WP_NONCE_SALT=\"$(generate_rand_hash)\""
+    } > .env.wp-salt
+  else
+    echo "Skipping generating WP salts, /dev/urandom is not available."
+  fi
+}
+
 function init_project() {
   curl -L https://github.com/timoshka-lab/docker-dev-wordpress/archive/main.tar.gz | tar xvz -C ./ --strip-components=1
   cp .env.example .env
+  generate_wp_salt_env
 }
 
 function provision_docker_environment() {
