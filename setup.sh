@@ -47,6 +47,16 @@ function validate_env() {
     return 1
   fi
 
+  if ! [[ $NGINX_VERSION =~ ^([0-9]+)(\.[0-9]+){0,2}$ ]]; then
+    report_error "NGINX_VERSION is not set or is invalid"
+    return 1
+  fi
+
+  if ! [[ $NGINX_SERVER_NAME =~ ^[-[:alnum:]/_.]*$ ]]; then
+    report_error "NGINX_SERVER_NAME is not set or is invalid"
+    return 1
+  fi
+
   return 0
 }
 
