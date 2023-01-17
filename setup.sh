@@ -90,7 +90,7 @@ function validate_dependencies() {
 }
 
 function generate_rand_hash() {
-  LC_ALL=C tr -dc 'A-Za-z0-9!%#$&()-+*.=<>@^_~' </dev/urandom | head -c 64 ; echo ''
+  LC_ALL=C tr -dc 'A-Za-z0-9!%#&()-+*.=<>@^_~' </dev/urandom | head -c 64 ; echo ''
 }
 
 function generate_wp_salt_env() {
