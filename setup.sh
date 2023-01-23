@@ -112,6 +112,12 @@ function init_project() {
 
 function provision_docker_environment() {
   docker compose build
+
+  if ! docker network inspect wordpress-shared > /dev/null 2>&1; then
+    echo "Creating docker network 'wordpress-shared'..."
+    docker network create wordpress-shared
+  fi
+
   docker compose up -d
   docker compose exec app /setup.sh
 }
