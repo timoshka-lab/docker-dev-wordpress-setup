@@ -4,8 +4,7 @@ set -eu
 
 function load_env() {
   if [ -f .env ]; then
-    # shellcheck disable=SC2046
-    export $(grep -v '^#' .env | xargs)
+    . .env
   fi
 }
 
