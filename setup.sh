@@ -129,8 +129,8 @@ function main() {
   if [ -n "$(ls "$PWD")" ]; then
     echo "Detecting docker environment in current directory..."
 
-    if [ -f "$PWD/.ddw_version" ]; then
-      echo "Docker environment was detected with version: $(cat "$PWD/.ddw_version")"
+    if [ -f "$PWD/.kit_version" ]; then
+      echo "Docker environment was detected with version: $(cat "$PWD/.kit_version")"
 
       if [ ! -f "$PWD/.env.wp-salt" ]; then
         echo "Generating wordpress salt keys..."
