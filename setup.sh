@@ -160,7 +160,7 @@ function main() {
   if [ "$NGINX_ENABLE_SSL" = true ]; then
     if [ -x "$(command -v security)" ]; then
       echo "Installing ssl certificate into keychain..."
-      sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain "$(pwd)/docker/nginx/certs/server.crt"
+      sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain "$(pwd)/docker/storage/nginx/certs/server.crt"
     else
       echo "Warning: you have to add ssl certificate to your keychain manually."
     fi
