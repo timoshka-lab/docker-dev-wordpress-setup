@@ -22,7 +22,7 @@ function validate_env() {
   required=(PHP_VERSION WP_SITE_URL WP_EMAIL MYSQL_VERSION MYSQL_USER MYSQL_PASSWORD MYSQL_ROOT_PASSWORD MYSQL_DATABASE NGINX_VERSION NGINX_SERVER_NAME COMPOSE_PROJECT_NAME)
 
   for var in "${required[@]}"; do
-    if [ -z "${!var}" ]; then
+    if [ -z "${!var-}" ]; then
       report_error "$var is required environment variable"
       return 1
     fi
