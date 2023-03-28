@@ -53,7 +53,7 @@ function validate_env() {
     return 1
   fi
 
-  if ! [[ $NGINX_SERVER_NAME =~ ^[-[:alnum:]/_.]*$ ]]; then
+  if ! [[ $NGINX_SERVER_NAME =~ ^[-[:alnum:]/_.,]*$ ]]; then
     report_error "NGINX_SERVER_NAME is not set or is invalid. Valid formats: 'example.test'"
     return 1
   fi
